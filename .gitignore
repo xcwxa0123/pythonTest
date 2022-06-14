@@ -1,2 +1,6 @@
 test
 __pycache__
+*.txt
+*.7z
+*.pyc
+*.pyc
