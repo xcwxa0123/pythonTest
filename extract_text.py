@@ -3,7 +3,9 @@ from bs4 import BeautifulSoup
 # from trans_params import KAKUYOMU_PARAMS as PARAMS_DATA
 from trans_params import MIMNAMI_PARAMS as PARAMS_DATA
 import name_change as nc
+import threading
 
+r = threading.Lock()
 # HTML文件转为txt
 # path=要读的文件的全路径; name=文件名; write_path=写入路径
 def trans_text(path, name, write_path, params_data):
@@ -34,6 +36,10 @@ def transe_start(params_data):
     for file_name in file_list:
         trans_text('{0}/{1}'.format(params_data.get('TEXTFILE_PATH'), file_name), file_name, '{0}/{1}'.format(params_data.get('TARGET_CREATE_PATH'), params_data.get('WRITE_DIR_NAME')), params_data)
 
-nc.transe_name(PARAMS_DATA)
+def start():
+    r.acquire()
+    nc.transe_name(PARAMS_DATA)
+    transe_start(PARAMS_DATA)
+    r.release()
 
-transe_start(PARAMS_DATA)
+start()
