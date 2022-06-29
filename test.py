@@ -26,4 +26,4 @@ test_dic2 = { 'a': 9, 'b': 8, 'c': 7 }
 
 SELECTED_NAME = 'test_dic'
 
-print(SELECTED_NAME.get('a'))
+print(6/0)
