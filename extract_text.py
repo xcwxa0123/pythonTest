@@ -1,7 +1,7 @@
 import os
 from bs4 import BeautifulSoup
-# from trans_params import KAKUYOMU_PARAMS as PARAMS_DATA
-from trans_params import SHOUSETSUNAROU_PARAMS as PARAMS_DATA
+from trans_params import KAKUYOMU_PARAMS as PARAMS_DATA
+# from trans_params import SHOUSETSUNAROU_PARAMS as PARAMS_DATA
 import name_change as nc
 import threading
 
