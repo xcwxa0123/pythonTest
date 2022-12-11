@@ -1,5 +1,5 @@
 @ECHO OFF
-Setlocal ENABLEDELAYEDEXPANSION
+SETLOCAL ENABLEDELAYEDEXPANSION
 
 @REM 枚举各仓库地址 三期开发git记录选择 四期开发上传ftp
 ECHO 本程序用于备份所选仓库下git上一次提交的文件,以便上传FTP
