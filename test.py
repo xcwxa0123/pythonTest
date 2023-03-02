@@ -21,9 +21,12 @@
 # print(i.say('infooooo'))
 # print(j.get_species())
 
-test_dic = { 'a': 1, 'b': 2, 'c': 3 }
-test_dic2 = { 'a': 9, 'b': 8, 'c': 7 }
+# test_dic = { 'a': 1, 'b': 2, 'c': 3 }
+# test_dic2 = { 'a': 9, 'b': 8, 'c': 7 }
 
-SELECTED_NAME = 'test_dic'
+# SELECTED_NAME = 'test_dic'
 
-print(6/0)
+# print(6/0)
+# a = [[1,2,3], [4,5,6], [7,8,9,0]]
+# print(a[0:])
+print('%E')
