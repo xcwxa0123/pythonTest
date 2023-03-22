@@ -8,7 +8,7 @@ class PageDealController:
         if not page_index:
             page_index = 0
         try:
-            book_msg_list = s_pagedeal.PageDeal.get_book_msg(page_index)
+            book_msg_list = s_pagedeal.PageDealService.get_book_msg(page_index)
         except Exception as e:
             print(e)
             code = 500
