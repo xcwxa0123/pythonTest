@@ -28,5 +28,4 @@ class PageDealService(BaseService):
                     'book_href': book_href 
                 }
                 book_list.append(boot_dist)
-        print('book_list', book_list)
         return book_list
