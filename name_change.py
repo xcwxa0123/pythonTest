@@ -12,7 +12,6 @@ def transe_name(data_params):
             os.rename('{0}/{1}'.format(data_params.get('TEXTFILE_PATH'), file_name), '{0}/{1}'.format(data_params.get('TEXTFILE_PATH'), new_name))
         else: 
             new_name = ''
-            # ë≈?ï∂åèÅCéÊ?è€classâ∫ìIï∂éö
             with open('{0}/{1}'.format(data_params.get('TEXTFILE_PATH'), file_name), encoding='utf-8', errors='ignore') as temp_file:
                 content = temp_file.read()
                 soup = BeautifulSoup(content, 'html.parser')

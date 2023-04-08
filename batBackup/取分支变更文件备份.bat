@@ -1,50 +1,50 @@
 @ECHO OFF
 SETLOCAL ENABLEDELAYEDEXPANSION
 
-@REM Ã¶¾Ù¸÷²Ö¿âµØÖ· ÈıÆÚ¿ª·¢git¼ÇÂ¼Ñ¡Ôñ ËÄÆÚ¿ª·¢ÉÏ´«ftp
+@REM æšä¸¾å„ä»“åº“åœ°å€ ä¸‰æœŸå¼€å‘gitè®°å½•é€‰æ‹© å››æœŸå¼€å‘ä¸Šä¼ ftp
 
-@REM 1¡¢ÊäÈëÊ±¼ä·¶Î§
-@REM 2¡¢´òÓ¡³öÊ±¼ä·¶Î§ÄÚËùÓĞÌá½»
+@REM 1ã€è¾“å…¥æ—¶é—´èŒƒå›´
+@REM 2ã€æ‰“å°å‡ºæ—¶é—´èŒƒå›´å†…æ‰€æœ‰æäº¤
 
-ECHO ±¾³ÌĞòÓÃÓÚ±¸·İËùÑ¡²Ö¿âÏÂgitÉÏÒ»´ÎÌá½»µÄÎÄ¼ş,ÒÔ±ãÉÏ´«FTP
+ECHO æœ¬ç¨‹åºç”¨äºå¤‡ä»½æ‰€é€‰ä»“åº“ä¸‹gitä¸Šä¸€æ¬¡æäº¤çš„æ–‡ä»¶,ä»¥ä¾¿ä¸Šä¼ FTP
 ECHO.
-ECHO ÇëÑ¡ÔñĞèÒª±¸·İµÄ²Ö¿âµØÖ·,°´ÈÎÒâ¼ü¼ÌĞø===============^>
+ECHO è¯·é€‰æ‹©éœ€è¦å¤‡ä»½çš„ä»“åº“åœ°å€,æŒ‰ä»»æ„é”®ç»§ç»­===============^>
 pause > nul
 FOR /F %%S IN ('MSHTA "%~f0"') DO (
     SET storage_path=%%S
     SET target_storage=%%~dS
 )
-ECHO ÒÑÑ¡Ôñ²Ö¿âµØÖ·: '!storage_path!'
+ECHO å·²é€‰æ‹©ä»“åº“åœ°å€: '!storage_path!'
 
 ECHO.
 ECHO.
 ECHO.
 ECHO.
 
-ECHO ÇëÑ¡Ôñ±¸·İÄ¿±êÎÄ¼ş¼ĞµØÖ·,°´ÈÎÒâ¼ü¼ÌĞø===============^>
+ECHO è¯·é€‰æ‹©å¤‡ä»½ç›®æ ‡æ–‡ä»¶å¤¹åœ°å€,æŒ‰ä»»æ„é”®ç»§ç»­===============^>
 pause > nul
 FOR /F %%a IN ('MSHTA "%~f0"') DO (
     SET backup_path=%%a
 )
-ECHO ÒÑÑ¡ÔñÄ¿±êÎÄ¼ş¼ĞµØÖ·: '!backup_path!'
+ECHO å·²é€‰æ‹©ç›®æ ‡æ–‡ä»¶å¤¹åœ°å€: '!backup_path!'
 
-SET /P brench_a=ÇëÊäÈë·ÖÖ§1(²»ÊäÊ±Ä¬ÈÏHEAD~1):
+SET /P brench_a=è¯·è¾“å…¥åˆ†æ”¯1(ä¸è¾“æ—¶é»˜è®¤HEAD~1):
 IF /I "!brench_a!"=="" (
     SET brench_a=HEAD~1
 )
-ECHO ÒÑÉèÖÃ·ÖÖ§1£º!brench_a!
+ECHO å·²è®¾ç½®åˆ†æ”¯1ï¼š!brench_a!
 
-SET /P brench_b=ÇëÊäÈëÄ¿±ê·ÖÖ§1(²»ÊäÊ±Ä¬ÈÏHEAD):
+SET /P brench_b=è¯·è¾“å…¥ç›®æ ‡åˆ†æ”¯1(ä¸è¾“æ—¶é»˜è®¤HEAD):
 IF /I "!brench_b!"=="" (
     SET brench_b=HEAD
 )
-ECHO ÒÑÉèÖÃ·ÖÖ§2£º!brench_b!
+ECHO å·²è®¾ç½®åˆ†æ”¯2ï¼š!brench_b!
 
 CALL:main_func
 GOTO:EOF
 
 :main_func
-    @REM Ä¿±ê²Ö¿âµØÖ·
+    @REM ç›®æ ‡ä»“åº“åœ°å€
     !target_storage!
     CD !storage_path!
     SET comment='git diff --name-only !brench_a! !brench_b!'
@@ -56,21 +56,21 @@ GOTO:EOF
             MKDIR !backup_path!%%~pI
         )
         COPY /-Y /V %%~dpnxI !backup_path!%%~pnxI
-        ECHO ÎÄ¼ş %%~dpnxI ÒÑ¸´ÖÆµ½: !backup_path!%%~pnxI
+        ECHO æ–‡ä»¶ %%~dpnxI å·²å¤åˆ¶åˆ°: !backup_path!%%~pnxI
     )
-    SET /P is_open_explorer=ÊÇ·ñ´ò¿ª±¸·İÎÄ¼ş¼Ğ^(Y/N^):
+    SET /P is_open_explorer=æ˜¯å¦æ‰“å¼€å¤‡ä»½æ–‡ä»¶å¤¹^(Y/N^):
     IF /I "!is_open_explorer!"=="Y" (
         EXPLORER !backup_path!
     ) ELSE (
         GOTO:EOF
     )
-    ECHO ÎÄ¼ş±¸·İÒÑÍê³É,ÇëÊ¹ÓÃ±¸·İÎÄ¼şÉÏ´«FTP±ÜÃâ·¢Éú°æ±¾ÎÊÌâ,°´ÈÎÒâ¼üÍË³ö
+    ECHO æ–‡ä»¶å¤‡ä»½å·²å®Œæˆ,è¯·ä½¿ç”¨å¤‡ä»½æ–‡ä»¶ä¸Šä¼ FTPé¿å…å‘ç”Ÿç‰ˆæœ¬é—®é¢˜,æŒ‰ä»»æ„é”®é€€å‡º
     pause > nul
 GOTO:EOF
 
 <script>
 var Shell = new ActiveXObject("Shell.Application");
-var Folder = Shell.BrowseForFolder(0, "select folder", 0); //ÆğÊ¼Ä¿Â¼Îª£º×ÀÃæ
+var Folder = Shell.BrowseForFolder(0, "select folder", 0); //èµ·å§‹ç›®å½•ä¸ºï¼šæ¡Œé¢
 if (Folder != null) {
     Folder = Folder.items();
     Folder = Folder.item();
